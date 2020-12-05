@@ -10,7 +10,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    num = random.randint(0, 30)
+    num = random.randint(0, 100)
 
     if message.author == client.user:
         return
