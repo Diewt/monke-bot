@@ -2,7 +2,7 @@ import discord
 import random
 
 client = discord.Client()
-
+possible_messages = ['me monke', 'no care, me monke', ':monkey:', ':monkey_face:']
 
 @client.event
 async def on_ready():
@@ -15,18 +15,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if num == 5:
-        await message.channel.send('me monke')
-    elif num == 6:
-        await message.channel.send('no care, me monke')
-    elif num == 7:
-        await message.add_reaction(emoji='monkey')
-    elif num == 8:
-        await message.add_reaction(emoji='monkey_face')
-    elif num == 9:
-        await message.channel.send(':monkey:')
-    elif num == 4:
-        await message.channel.send(':monkey_face:')
+    if num == 69:
+        await message.channel.send(random.choice(possible_messages))
 
 
 client.run('Nzg0NjM5NzU3MzA0NzI1NTM0.X8sOuA.eyxrOiSH2kkjLEJFWoBPMoHKOOw')
