@@ -2,7 +2,12 @@ import discord
 import random
 
 client = discord.Client()
-possible_messages = ['me monke', 'no care, me monke', ':monkey:', ':monkey_face:', "https://tenor.com/view/monkey-licking-tongue-french-gif-9316431", "https://tenor.com/view/obese-monkey-fat-monkey-summer-belly-eating-lettuce-summer-look-gif-13014350"]
+
+#read in file of possible messages
+with open("possible_messages.txt", "r") as files:
+	possible_messages = files.readlines()
+
+possible_messages = [i.strip('[]').replace('\n', '') for i in possible_messages]
 
 @client.event
 async def on_ready():
