@@ -2,7 +2,7 @@ import discord
 import random
 
 client = discord.Client()
-possible_messages = ['me monke', 'no care, me monke', ':monkey:', ':monkey_face:']
+possible_messages = ['me monke', 'no care, me monke', ':monkey:', ':monkey_face:', "https://tenor.com/view/monkey-licking-tongue-french-gif-9316431"]
 
 @client.event
 async def on_ready():
