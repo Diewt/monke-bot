@@ -1,5 +1,6 @@
 import discord
 import random
+import os
 
 client = discord.Client()
 
@@ -26,4 +27,4 @@ async def on_message(message):
 #placeholder for client joining voice channel
 
 
-client.run(DISCORD_BOT_TOKEN)
+client.run(os.environ['DISCORD_BOT_TOKEN'])
