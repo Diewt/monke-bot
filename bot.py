@@ -24,4 +24,4 @@ async def on_message(message):
         await message.channel.send(random.choice(possible_messages))
 
 
-client.run('Nzg0NjM5NzU3MzA0NzI1NTM0.X8sOuA.eyxrOiSH2kkjLEJFWoBPMoHKOOw')
+client.run(DISCORD_BOT_TOKEN)
