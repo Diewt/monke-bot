@@ -23,5 +23,7 @@ async def on_message(message):
     if num == 69:
         await message.channel.send(random.choice(possible_messages))
 
+#placeholder for client joining voice channel
+
 
 client.run(DISCORD_BOT_TOKEN)
