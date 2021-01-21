@@ -1,6 +1,7 @@
 import discord
 import random
 import os
+import time
 
 client = discord.Client()
 
@@ -24,9 +25,11 @@ async def on_message(message):
     if num == 69:
         await message.channel.send(random.choice(possible_messages))
 	
-    if "monke" in str(message):
-	for i in 10:
-	    await message.channel.send("monke")
+    if "monke" in str(message) and (message.author != client.user):
+        print("monke detected")
+        time.sleep(1)
+        for i in range(10):
+            await message.channel.send("monke")
 
 #placeholder for client joining voice channel
 
