@@ -25,7 +25,7 @@ async def on_message(message):
     if num == 69:
         await message.channel.send(random.choice(possible_messages))
 	
-    if "monke" in str(message) and (message.author != client.user):
+    if "monke" in str(message) and (message.author != client.user) and ("mine" in str(message.channel)):
         print("monke detected")
         time.sleep(1)
         for i in range(10):
