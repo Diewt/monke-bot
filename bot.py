@@ -23,6 +23,10 @@ async def on_message(message):
 
     if num == 69:
         await message.channel.send(random.choice(possible_messages))
+	
+    if "monke" in message:
+	for i in 10:
+	    await message.channel.send("monke")
 
 #placeholder for client joining voice channel
 
