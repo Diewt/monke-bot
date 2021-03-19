@@ -32,6 +32,9 @@ async def on_message(message):
             await message.channel.send("Did you mean 'gopchamp'? Me monke.")
         elif "pog" in string.lower():
             await message.channel.send("Did you mean 'gop'? Me monke.")
+        elif "gop" in string.lower():
+            await message.channel.send("Good job. You monke. Me monke.")
+
 
 #placeholder for client joining voice channel
 
