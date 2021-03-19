@@ -25,7 +25,7 @@ async def on_message(message):
     if num == 69:
         await message.channel.send(random.choice(possible_messages))
 	
-    for str in str(message).split():
+    for str in str(message.content).split():
 	if "pog" == str.lower():
 	    await message.channel.send("Did you mean 'gop'? Me monke.")
 	elif "pogchamp" == str.lower():
