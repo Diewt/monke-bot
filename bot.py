@@ -26,9 +26,9 @@ async def on_message(message):
         await message.channel.send(random.choice(possible_messages))
 	
     for str in str(message).split():
-	if "pog" in str.tolower():
+	if "pog" in str.lower():
 	    await message.channel.send("Did you mean 'gop'? Me monke.")
-	elif "pogchamp" in str.tolower():
+	elif "pogchamp" in str.lower():
 	    await message.channel.send("Did you mean 'gopchamp'? Me monke.")
 
 #placeholder for client joining voice channel
