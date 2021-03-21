@@ -31,7 +31,7 @@ async def on_message(message):
         await message.channel.send("Did you mean 'gopchamp'? Me monke.")
     elif "pog" in message.content.split():
         await message.channel.send("Did you mean 'gop'? Me monke.")
-    elif "gop" in message.content.split():
+    elif "gop" in message.content.split() or "gopchamp" in message.content.split()  or "gopchampion" in message.content.split():
         await message.channel.send("Good job. You monke. Me monke.")
 
 
