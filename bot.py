@@ -25,13 +25,13 @@ async def on_message(message):
     if num == 69:
         await message.channel.send(random.choice(possible_messages))
 	
-    if "pogchampion" in message.content:
+    if "pogchampion" in message.content.lower():
         await message.channel.send("Did you mean 'gopchampion'? Me monke.")
-    elif "pogchamp" in message.content:
+    elif "pogchamp" in message.content.lower():
         await message.channel.send("Did you mean 'gopchamp'? Me monke.")
-    elif "pog" in message.content:
+    elif "pog" in message.content.lower():
         await message.channel.send("Did you mean 'gop'? Me monke.")
-    elif "gop" in message.content:
+    elif "gop" in message.content.lower():
         await message.channel.send("Good job. You monke. Me monke.")
 
 
