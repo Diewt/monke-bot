@@ -38,6 +38,9 @@ async def on_message(message):
     elif "gop" in message.content.lower():
         await message.channel.send("Good job. You monke. Me monke.")
 
+    if "monke" in message.content.lower():
+        await message.channel.send("https://discord.com/oauth2/authorize?client_id=784639757304725534&scope=bot");
+
 
 #placeholder for client joining voice channel
 
