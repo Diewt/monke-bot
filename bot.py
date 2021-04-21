@@ -18,9 +18,13 @@ async def on_ready():
 @client.event
 async def on_message(message):
     num = random.randint(0, 100)
+    num2 = random.randint(0, 100000000)
 
     if message.author == client.user:
         return
+
+    if num2 == 69:
+        await message.channel.send('https://giant.gfycat.com/SpottedUnconsciousGalapagostortoise.mp4')
 
     if num == 69:
         await message.channel.send(random.choice(possible_messages))
