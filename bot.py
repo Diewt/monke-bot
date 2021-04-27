@@ -3,7 +3,10 @@ import random
 import os
 import time
 
+from db import DB
+
 client = discord.Client()
+db = DB()
 
 #read in file of possible messages
 with open("possible_messages.txt", "r") as files:
@@ -19,6 +22,11 @@ async def on_ready():
 async def on_message(message):
     num = random.randint(0, 100)
     num2 = random.randint(0, 100000000)
+
+    #check if user exists, otherwise insert into database
+    matching_users = db.getMatchingUserId(message.author.id)
+    if matching_users.shape[0] == 0:
+        db.createNewUserEntry(message.author.id)
 
     if message.author == client.user:
         return
@@ -39,7 +47,7 @@ async def on_message(message):
         await message.channel.send("Good job. You monke. Me monke.")
 
     if "monke" in message.content.lower():
-        await message.channel.send("https://discord.com/oauth2/authorize?client_id=784639757304725534&scope=bot");
+        await message.channel.send("https://discord.com/oauth2/authorize?client_id=784639757304725534&scope=bot")
 
 
 #placeholder for client joining voice channel
