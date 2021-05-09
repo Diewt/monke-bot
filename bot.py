@@ -45,6 +45,13 @@ async def on_message(message):
         await message.channel.send("Did you mean 'gop'? Me monke.")
     elif "gop" in message.content.lower():
         await message.channel.send("Good job. You monke. Me monke.")
+        
+    if "based" in message.content.lower():
+        based_str = message.content.lower().replace("based", "cringe")
+        await message.channel.send(based_str)
+    if "cringe" in message.content.lower():
+        cringe_str = message.content.lower().replace("cringe", "based")
+        await message.channel.send(cringe_str)
 
     if "monke" in message.content.lower():
         await message.channel.send("https://discord.com/oauth2/authorize?client_id=784639757304725534&scope=bot")
