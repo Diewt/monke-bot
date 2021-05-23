@@ -3,6 +3,7 @@ import random
 import os
 import time
 import requests
+import json
 
 from db import DB
 
@@ -12,11 +13,11 @@ from PIL import Image
 
 client = discord.Client()
 db = DB()
-resnet = models.resnet101(pretrained=True)
-resnet.eval()
+model = models.densenet121(pretrained=True)
+model.eval()
 
 preprocess = transforms.Compose([
-        transforms.Resize(256),
+        transforms.Resize(255),
         transforms.CenterCrop(224),
         transforms.ToTensor(),
         transforms.Normalize(
@@ -31,22 +32,16 @@ with open("possible_messages.txt", "r") as files:
 possible_messages = [i.strip('[]').replace('\n', '') for i in possible_messages]
 
 def recognize_image(url):
+    imagenet_class_index = json.load(open('imagenet_class_index.json'))
     im = Image.open(requests.get(url, stream=True).raw).convert('RGB')
-    img_t = preprocess(im)
-    batch_t = torch.unsqueeze(img_t, 0)
-    resnet.eval()
-    out = resnet(batch_t)
-    with open('imagenet_classes.txt') as f:
-        labels = [line.strip() for line in f.readlines()]
-
-    _, index = torch.max(out, 1)
-
-    percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
-    animal = labels[index[0]].split(', ')[1]
-    animal = animal.replace("_", ' ')
+    tensor = preprocess(im).unsqueeze(0)
     im.close()
+    outputs = model.forward(tensor)
 
-    return str("Me am " + str(int(percentage[index[0]].item())) + "% sure me see " + str(animal))
+    _, y_hat = outputs.max(1)
+    predicted_idx = str(y_hat.item())
+    animal = imagenet_class_index[predicted_idx][1].replace('_', ' ').lower()
+    return animal
 
 @client.event
 async def on_ready():
@@ -66,12 +61,12 @@ async def on_message(message):
         db.createNewUserEntry(message.author.id)
 
     if message.content.lower().endswith(('jpeg', 'png', 'jpg')):
-        recognize_str = recognize_image(message.content)
-        await message.channel.send(recognize_str)
+        recognized_animal = recognize_image(message.content)
+        await message.channel.send("Me thinks me see " + recognized_animal)
     elif message.attachments:
         for a in message.attachments:   
-            recognize_str = recognize_image(a.url)
-            await message.channel.send(recognize_str)
+            recognized_animal = recognize_image(a.url)
+            await message.channel.send("Me thinks me see " + recognized_animal)
 
     if num == 69:
         await message.channel.send(random.choice(possible_messages))
