@@ -13,6 +13,7 @@ from PIL import Image
 client = discord.Client()
 db = DB()
 resnet = models.resnet101(pretrained=True)
+resnet.eval()
 
 preprocess = transforms.Compose([
         transforms.Resize(256),
