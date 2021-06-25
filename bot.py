@@ -42,10 +42,10 @@ def recognize_image(url):
     predicted_idx = str(y_hat.item())
     prediction = imagenet_class_index[predicted_idx][1].replace('_', ' ').lower()
     if prediction == "comic book":
-	meme_choice = ["good meme", "bad meme"]
-	return meme_choice[random.choice[0,1]]
+        meme_choice = ["good meme", "bad meme"]
+        return meme_choice[random.choice[0,1]]
     else:
-	return prediction
+        return prediction
 
 @client.event
 async def on_ready():
