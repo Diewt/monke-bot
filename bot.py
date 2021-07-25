@@ -91,6 +91,12 @@ async def on_message(message):
         cringe_str = message.content.lower().replace("cringe", "based")
         await message.channel.send(cringe_str)
 
+    if "photo" in message.content.lower():
+        if num < 50:
+            await message.channel.send("bogos binted?")
+        else:
+            await message.channel.send("dogos dinted?")
+
     if "monke" in message.content.lower():
         await message.channel.send("https://discord.com/oauth2/authorize?client_id=784639757304725534&scope=bot")
 
